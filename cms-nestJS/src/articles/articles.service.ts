@@ -14,6 +14,6 @@ export class ArticlesService {
   }
 
   async findAll(): Promise<Article[]> {
-    return await this.articleModel.find().exec();
+    return await this.articleModel.find().sort({creationDate: -1}).exec();
   }
 }
