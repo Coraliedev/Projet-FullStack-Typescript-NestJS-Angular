@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-article-new',
@@ -7,16 +8,25 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./article-new.component.css'],
 })
 export class ArticleNewComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  response$: any;
+  constructor(
+    private fb: FormBuilder,
+    private articleService: ArticleService
+  ) {}
 
   articleForm: FormGroup = this.fb.group({
-    articleTitle: [''],
-    articleContent: [''],
+    title: [''],
+    content: [''],
   });
 
   ngOnInit(): void {}
 
-  submit = () => {
+  async submit() {
     console.log('article submit', this.articleForm.value);
+    this.response$ = this.articleService
+      .createArticle(this.articleForm.value)
+      .subscribe((res) => {
+        console.log('res', res);
+      });
   }
 }
