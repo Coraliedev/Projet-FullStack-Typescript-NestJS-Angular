@@ -8,7 +8,9 @@
       id="articleTitle"
       placeholder="Enter title"
       formControlName="title"
+      required
     />
+    {{title?.errors | json}}
   </div>
   <div class="form-group">
     <label for="articleContent">Article content</label>
@@ -18,7 +20,9 @@
       rows="3"
       placeholder="Enter content"
       formControlName="content"
+      required
     ></textarea>
+    {{content?.errors | json}}
   </div>
   <div>
   <button class="btn btn-primary mt-2">
