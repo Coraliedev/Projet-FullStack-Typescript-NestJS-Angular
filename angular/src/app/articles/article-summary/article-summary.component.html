@@ -4,6 +4,7 @@
       <h3 class="mb-0">{{article.title}}</h3>
       <div class="mb-1 text-muted">{{article.creationDate}}</div>
       <p class="card-text mb-auto">{{article.content}}</p>
+      <button class="stretched-link btn btn-danger" (click)="delete(article)">Delete article</button>
     </div>
   </div>
 </div>
