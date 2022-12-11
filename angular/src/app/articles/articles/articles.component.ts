@@ -4,14 +4,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css']
+  styleUrls: ['./articles.component.css'],
 })
 export class ArticlesComponent implements OnInit {
   articles$: any;
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.articles$ = this.httpClient.get('http://localhost:3000/articles');
   }
 
+  reloadArticles(deletionSuccess: any) {
+    console.log('deletion successful, reloading articles...', deletionSuccess);
+    this.articles$ = this.httpClient.get('http://localhost:3000/articles');
+  }
 }
