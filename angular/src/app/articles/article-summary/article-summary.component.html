@@ -7,7 +7,7 @@
       <h3 class="mb-0">{{ article.title }}</h3>
       <div class="mb-1 text-muted">{{ article.creationDate }}</div>
       <p class="card-text mb-auto">{{ article.content }}</p>
-      <button class="btn btn-warning" (click)="toggleReadMode()">
+      <button class="btn btn-warning" (click)="toggleReadMode()" *ngIf="authService.isAdmin">
         Update article
       </button>
       <br />
@@ -24,7 +24,7 @@
     [hidden]="!isInEditMode"
   >
     <app-article-edit [article]="article"></app-article-edit>
-    <button class="btn btn-primary" (click)="toggleReadMode()">
+    <button class="btn btn-primary" (click)="toggleReadMode()" *ngIf="authService.isAdmin">
       Back to read
     </button>
   </div>

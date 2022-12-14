@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { ArticleService } from 'src/app/admin/article.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Article } from 'src/app/models/article.model';
 
 @Component({
@@ -21,7 +22,7 @@ export class ArticleSummaryComponent implements OnInit {
   isInEditMode = false;
 
 
-  constructor(private articleService: ArticleService) {}
+  constructor(public articleService: ArticleService, public authService: AuthService) {}
 
   ngOnInit(): void {}
 
