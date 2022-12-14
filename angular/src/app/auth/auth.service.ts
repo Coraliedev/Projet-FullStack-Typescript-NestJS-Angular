@@ -15,4 +15,12 @@ export class AuthService {
       console.log('createdUser',createdUser);
     });
   }
+
+  login(credentials: any) {
+    const fullURL = `http://localhost:3000/auth/login`;
+    this.http.post<any>(fullURL, credentials).subscribe(token => {
+      console.log('token',token);
+
+    });
+  }
 }
