@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private baseURL = 'http://localhost:3000/users';
+  tokenKey = 'token';
 
   constructor(private http: HttpClient) {}
 
@@ -18,9 +19,8 @@ export class AuthService {
 
   login(credentials: any) {
     const fullURL = `http://localhost:3000/auth/login`;
-    this.http.post<any>(fullURL, credentials).subscribe(token => {
-      console.log('token',token);
-
+    this.http.post<any>(fullURL, credentials).subscribe(serverObject => {
+      localStorage.setItem(this.tokenKey, serverObject.access_token);
     });
   }
 }
