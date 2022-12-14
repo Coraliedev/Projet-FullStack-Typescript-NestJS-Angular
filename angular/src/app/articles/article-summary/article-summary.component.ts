@@ -18,6 +18,9 @@ export class ArticleSummaryComponent implements OnInit {
 
   @Input()
   article!: Article;
+  isInEditMode = false;
+
+
   constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {}
@@ -44,5 +47,9 @@ export class ArticleSummaryComponent implements OnInit {
   handleSuccess(data: any) {
     console.log('success', data);
     this.deleteSuccess.emit(true);
+  }
+
+  toggleReadMode() {
+    this.isInEditMode = !this.isInEditMode;
   }
 }

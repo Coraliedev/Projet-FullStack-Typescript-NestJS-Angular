@@ -1,16 +1,31 @@
 <div class="col-md-12">
-  <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+  <div
+    class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+    [hidden]="isInEditMode"
+  >
     <div class="col p-4 d-flex flex-column position-static">
-      <h3 class="mb-0">{{article.title}}</h3>
-      <div class="mb-1 text-muted">{{article.creationDate}}</div>
-      <p class="card-text mb-auto">{{article.content}}</p>
-      <button class="stretched-link btn btn-danger" (click)="delete(article)">Delete article</button>
+      <h3 class="mb-0">{{ article.title }}</h3>
+      <div class="mb-1 text-muted">{{ article.creationDate }}</div>
+      <p class="card-text mb-auto">{{ article.content }}</p>
+      <button class="btn btn-warning" (click)="toggleReadMode()">
+        Update article
+      </button>
+      <br />
+      <button class="btn btn-danger" (click)="delete(article)">
+        Delete article
+      </button>
     </div>
   </div>
 </div>
 
 <div class="col-md-12">
-  <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-  <app-article-edit [article]="article"></app-article-edit>
+  <div
+    class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+    [hidden]="!isInEditMode"
+  >
+    <app-article-edit [article]="article"></app-article-edit>
+    <button class="btn btn-primary" (click)="toggleReadMode()">
+      Back to read
+    </button>
   </div>
 </div>
