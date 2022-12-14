@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { ReadUserDto } from 'src/users/dto/read-user.dto';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
@@ -12,5 +13,13 @@ export class AuthService {
       return result;
     }
     return null;
+  }
+
+  async login(readUserDto: ReadUserDto) {
+    const foundUser = this.usersService.findOne(readUserDto.email);
+    if (!foundUser) {
+      return new NotFoundException();
+    }
+    return foundUser;
   }
 }
