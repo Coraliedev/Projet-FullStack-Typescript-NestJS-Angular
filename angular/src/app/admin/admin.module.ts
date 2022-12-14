@@ -21,6 +21,9 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    ArticleEditComponent
   ]
 })
 export class AdminModule { }

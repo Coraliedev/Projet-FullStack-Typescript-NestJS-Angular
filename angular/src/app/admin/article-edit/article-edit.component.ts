@@ -13,7 +13,7 @@ export class ArticleEditComponent implements OnInit {
   @Input()
   article!: Article;
   articleForm!: FormGroup;
-  response$ = null;
+  response$?: any;
   error = null;
 
   constructor(
@@ -41,7 +41,7 @@ export class ArticleEditComponent implements OnInit {
 
   async submit() {
     this.error = null;
-    this.response$ = await this.article
+    this.response$ = await this.articleService
       .updateArticle(this.article._id, this.articleForm.value)
       .pipe(
         catchError((error) => {
